@@ -22,7 +22,7 @@ const Navbar = () => {
 
         </div>
         <div className='login-links hidden sm:block tracking-wider'>
-            <a href='/'>Login</a>
+            <span>Login</span>
             <button className='bg-[#544DF2] text-white px-[30px] py-[12px] rounded-[49px] ml-4'>Get started</button>
         </div>
     </div>

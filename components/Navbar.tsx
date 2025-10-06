@@ -14,10 +14,10 @@ const Navbar = () => {
 
         <div className="nav-links hidden sm:block">
             <ul className='flex gap-11 text-[14px] tracking-widest'>
-                <li><a href="/">Home</a></li>
-                <li><a href="">Features</a></li>
-                <li><a href="">How it works</a></li>
-                <li><a href="">Pricing</a></li>
+                <li>Home</li>
+                <li>Features</li>
+                <li>How it works</li>
+                <li>Pricing</li>
             </ul>
 
         </div>

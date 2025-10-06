@@ -28,7 +28,7 @@ const Hero = () => {
       <Image
         src={dashboardDesktop}
         alt="dashboard-image"
-        className="w-3/5 m-auto"
+        className="w-3/4 sm:w-3/5 m-auto"
       />
     </div>
   );

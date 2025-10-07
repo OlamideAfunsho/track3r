@@ -1,6 +1,8 @@
 import React from "react";
 import dashboardDesktop from "../public/dashboard-desktop.png";
 import playIcon from "../public/play-icon.svg";
+import leftArrow from "../public/arrow-1.svg";
+import rightArrow from "../public/arrow-2.svg";
 import Image from "next/image";
 
 const Hero = () => {
@@ -25,10 +27,15 @@ const Hero = () => {
         </button>
       </div>
 
+      <div className="arrows flex justify-between w-4/6 sm:w-3/5 m-auto sm:mt-[-100px]">
+        <Image src={leftArrow} alt="arrow-image" className="w-20 sm:w-auto" />
+        <Image src={rightArrow} alt="arrow-image" className="w-20 sm:w-auto" />
+      </div>
+
       <Image
         src={dashboardDesktop}
         alt="dashboard-image"
-        className="w-3/4 sm:w-3/5 m-auto"
+        className="w-3/4 sm:w-2/3 m-auto"
       />
     </div>
   );

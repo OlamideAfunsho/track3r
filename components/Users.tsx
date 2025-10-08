@@ -10,16 +10,16 @@ const Users = () => {
         <span className="text-[#929297]">Trusted by</span> Thousands of
         Organized Users
       </h1>
-      <div className="flex flex-col md:flex-row mt-5 justify-center items-center gap-3 md:gap-8">
-        <Image src={countriesIcon} alt="countries-icon" />
+      <div className="flex flex-row mt-5 mb-3 md:mb-auto justify-center items-center gap-3 md:gap-8">
+        <Image src={countriesIcon} width={80} alt="countries-icon" className="md:w-auto" />
 
-        <h2 className="flex items-center gap-6 text-[#525252] mb-3 md:mb-0">
-          <span className="text-5xl md:text-[64px] font-bold text-[#544DF2]">50000+</span>{" "}
-          Users Worldwide
+        <h2 className="flex items-center gap-3 md:gap-6 text-[#525252] md:mb-0">
+          <span className="text-xl md:text-[64px] font-bold text-[#544DF2]">50000+</span>{" "}
+          <span className="text-[14px] md:text-[18px]">Users Worldwide</span>
         </h2>
       </div>
 
-      <Image src={avatars} alt="avatars-stringed-together" className="w-2/3 m-auto" />
+      <Image src={avatars} alt="avatars-stringed-together" className="w-full md:w-2/3 m-auto" />
     </div>
   );
 };

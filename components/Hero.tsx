@@ -27,7 +27,7 @@ const Hero = () => {
         </button>
       </div>
 
-      <div className="arrows flex justify-between w-4/5 sm:w-3/5 m-auto sm:mt-[-100px]">
+      <div className="arrows hidden md:flex justify-between w-4/5 sm:w-3/5 m-auto sm:mt-[-100px]">
         <Image src={leftArrow} alt="arrow-image" className="w-20 sm:w-auto" />
         <Image src={rightArrow} alt="arrow-image" className="w-20 sm:w-auto" />
       </div>
@@ -35,7 +35,7 @@ const Hero = () => {
       <Image
         src={dashboardDesktop}
         alt="dashboard-image"
-        className="w-3/4 sm:w-2/3 m-auto"
+        className="w-full sm:w-2/3 m-auto"
       />
     </div>
   );

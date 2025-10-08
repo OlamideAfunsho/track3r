@@ -8,11 +8,11 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <div className="hero-con text-center mt-10 sm:mt-20  m-auto">
-      <h1 className="text-[50px] sm:text-[68px] font-bold">
+      <h1 className="text-[45px]/14 sm:text-[68px] font-bold">
         <span className="text-[#544DF2]">Never Miss</span>
         <br /> A Payment Again
       </h1>
-      <p className="text-[#49494B] text-[20px] w-10/12 sm:w-2/6 m-auto mt-3 tracking-wider ">
+      <p className="text-[#49494B] text-[20px] w-11/12 sm:w-2/6 m-auto mt-3 tracking-wider ">
         Track and manage all your bills and subscriptions in one place with
         smart reminders.
       </p>
@@ -27,7 +27,7 @@ const Hero = () => {
         </button>
       </div>
 
-      <div className="arrows flex justify-between w-4/6 sm:w-3/5 m-auto sm:mt-[-100px]">
+      <div className="arrows flex justify-between w-4/5 sm:w-3/5 m-auto sm:mt-[-100px]">
         <Image src={leftArrow} alt="arrow-image" className="w-20 sm:w-auto" />
         <Image src={rightArrow} alt="arrow-image" className="w-20 sm:w-auto" />
       </div>

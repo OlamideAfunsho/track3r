@@ -1,6 +1,7 @@
 import Features from "../../components/Features";
 import Hero from "../../components/Hero";
 import Navbar from "../../components/Navbar";
+import Users from "../../components/Users";
 
 
 export default function Home() {
@@ -11,7 +12,8 @@ export default function Home() {
           <Navbar />
         <Hero />
         </div>
-        
+
+        <Users />
         <Features />
         
       </main>

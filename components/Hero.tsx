@@ -12,7 +12,7 @@ const Hero = () => {
         <span className="text-[#544DF2]">Never Miss</span>
         <br /> A Payment Again
       </h1>
-      <p className="text-[#49494B] text-[20px] w-11/12 sm:w-2/6 m-auto mt-3 tracking-wider ">
+      <p className="text-[#49494B] text-[16px]/7 md:text-[20px] w-11/12 sm:w-2/6 m-auto mt-3 tracking-wider ">
         Track and manage all your bills and subscriptions in one place with
         smart reminders.
       </p>

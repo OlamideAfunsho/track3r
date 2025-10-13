@@ -4,15 +4,16 @@ import playIcon from "../public/play-icon.svg";
 import leftArrow from "../public/arrow-1.svg";
 import rightArrow from "../public/arrow-2.svg";
 import Image from "next/image";
+import { dmSans } from "@/app/fonts";
 
 const Hero = () => {
   return (
     <div className="hero-con text-center mt-10 sm:mt-20  m-auto">
-      <h1 className="text-[45px]/14 sm:text-[68px] font-bold">
+      <h1 className={`${dmSans.className} text-[45px]/14 sm:text-[68px]/20 font-bold`}>
         <span className="text-[#544DF2]">Never Miss</span>
         <br /> A Payment Again
       </h1>
-      <p className="text-[#49494B] text-[16px]/7 md:text-[20px] w-11/12 sm:w-2/6 m-auto mt-3 tracking-wider ">
+      <p className="text-[#49494B] text-[16px]/7 md:text-[20px] w-11/12 sm:w-2/6 m-auto mt-3 tracking-wider">
         Track and manage all your bills and subscriptions in one place with
         smart reminders.
       </p>

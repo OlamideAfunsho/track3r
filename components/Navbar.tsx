@@ -41,7 +41,7 @@ const Navbar = () => {
         {/* Desktop view */}
         <div className="nav-links hidden md:block">
             <ul className='flex gap-11 text-[14px] tracking-widest'>
-                <li>Home</li>
+                <li className='text-[#544DF2]'>Home</li>
                 <li>Features</li>
                 <li>How it works</li>
                 <li>Pricing</li>

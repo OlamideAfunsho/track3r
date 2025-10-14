@@ -1,5 +1,6 @@
 import React from 'react'
 import PricingCard from './PricingCard'
+import FAQs from './FAQs'
 
 const Pricing = () => {
   return (
@@ -7,6 +8,7 @@ const Pricing = () => {
         <h1 className='text-3xl text-center m-auto md:text-5xl font-bold'><span className='text-[#929297]'>Simple</span> Transparent <span className='text-[#544DF2]'>Pricing</span></h1>
         <span className='text-[#939393] mt-5'>Choose the plan that fits your needs</span>
         <PricingCard />
+        
     </div>
   )
 }

@@ -1,10 +1,12 @@
 import { dmSans } from '@/app/fonts';
 import React from 'react'
+import { CardType } from './types';
 import Image from 'next/image';
 import quoteIcon from '../public/quote-icon.svg'
 import starsIcon from '../public/stars-icon.svg'
 
 const Testimonials = () => {
+    
   const cardsData = [
         {
             image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200',
@@ -32,7 +34,7 @@ const Testimonials = () => {
         },
     ];
 
-    const CreateCard = ({ card }) => (
+    const CreateCard = ({ card }: { card: CardType }) => (
         <div className="p-4 rounded-lg mx-4 shadow hover:shadow-lg transition-all duration-200 w-72 md:w-90 shrink-0">
             <div className='flex justify-between mb-2'>
                 <Image width={30} src={quoteIcon} alt='quote-icon' />
@@ -50,7 +52,7 @@ const Testimonials = () => {
                     <span className={`${dmSans.className} text-xs text-[#544DF2]`}>{card.role}</span>
                 </div>
             </div>
-            <p className="text-sm py-4 text-gray-800">See your entire financial calendar in one view lorem ipsum dolor it ament consectur and good impact overall.</p>
+            <p className="text-sm py-4 text-[#787878]">See your entire financial calendar in one view lorem ipsum dolor it ament consectur and good impact overall.</p>
             <div className="flex items-center justify-between text-slate-500 text-xs">
                 <p>{card.date}</p>
             </div>

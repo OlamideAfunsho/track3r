@@ -76,8 +76,8 @@ const Testimonials = () => {
             }
         `}</style>
 
-        <div className="h-screen py-10 md:py-20">
-            <h1 className='text-center text-3xl md:text-5xl font-bold'><span className='text-[#929297]'>What Our Users</span> <span className='text-[#544DF2]'>Say</span> About Us</h1>
+        <div className="h-screen flex flex-col justify-center">
+            <h1 className='text-3xl px-8 md:text-5xl text-center font-bold'><span className='text-[#929297]'>What Our Users</span> <span className='text-[#544DF2]'>Say</span> About Us</h1>
 
             <div className="marquee-row w-full overflow-hidden relative">
                 <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>

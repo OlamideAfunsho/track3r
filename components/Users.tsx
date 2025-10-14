@@ -6,7 +6,7 @@ import avatars from "../public/avatars.png";
 const Users = () => {
   return (
     <div className="text-center w-3/4 m-auto mt-20 md:mt-28">
-      <h1 className="text-4xl md:text-5xl font-bold">
+      <h1 className="text-3xl md:text-5xl font-bold">
         <span className="text-[#929297]">Trusted by</span> Thousands of
         Organized Users
       </h1>

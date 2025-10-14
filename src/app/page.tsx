@@ -1,5 +1,6 @@
 import FAQs from "../../components/FAQs";
 import Features from "../../components/Features";
+import Footer from "../../components/Footer";
 import Hero from "../../components/Hero";
 import Navbar from "../../components/Navbar";
 import Pricing from "../../components/Pricing";
@@ -21,6 +22,7 @@ export default function Home() {
         <Pricing />
         <FAQs />
         <Testimonials />
+        <Footer />
         
       </main>
     </div>

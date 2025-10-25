@@ -12,8 +12,11 @@ export default function Home() {
   return (
     <div className="">
       <main >
-        <div className="bg-[#EAEAEC] w-full px-6 sm:px-12 py-4 mask-fade-bottom">
+        <div className="bg-[#EAEAEC] w-full px-6 sm:px-12 pt-4">
           <Navbar />
+        </div>
+        <div className="bg-[#EAEAEC] w-full px-6 sm:px-12 py-4 mask-fade-bottom">
+          
         <Hero />
         </div>
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../../../../public/logo.svg';
+import searchIcon from '../../../../public/search-icon.svg'
 import helpIcon from '../../../../public/dashboard-navlinks-icon-7.svg'
 import settingsIcon from '../../../../public/dashboard-navlinks-icon-8.svg'
 import logOUtIcon from '../../../../public/dashboard-navlinks-icon-9.svg'
@@ -13,12 +14,16 @@ const SideBar = () => {
     <div className='flex flex-col h-full bg-[#FFFFFF] py-3'>
         <Link href='/'><Image src={logo} width={120} alt='track3r-logo' className='pl-3' /></Link>
 
-        <input
-         className=" bg-[#FCFCFC] border-[#E0E0E0] border-[1px] rounded-[3px] placeholder-[#999DA7] text-[12px] my-4 mx-3 p-2"
+        <div className='flex gap-2 bg-[#FCFCFC] border-[#E0E0E0] border-[1px] rounded-[3px] my-4 mx-3 p-2'>
+          <Image src={searchIcon} width={16} alt='search-icon' />
+          <input
+         className="placeholder-[#999DA7] text-[12px]"
          type="text" 
          placeholder='Search bills, subscriptions...'
          
          />
+        </div>
+        
 
         <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-1">
         <NavLinks />

@@ -48,7 +48,7 @@ const handleNavClick = (id: string) => {
           transition={{ duration: 0.3, ease: "easeInOut" }}
         
         className={`fixed inset-0 z-50 bg-white/10 backdrop-blur-md bg-opacity-60 flex flex-col items-center space-y-8 text-[#544DF2] text-xl`}>
-          <Image src={closeIcon} onClick={() => setIsMenuOpen(false)} width={24} alt="close-icon" className="self-end mr-11 mt-9" />
+          <Image src={closeIcon} onClick={() => setIsMenuOpen(false)} width={24} alt="close-icon" className="self-end mr-11 mt-9 cursor-pointer" />
             <div className="flex flex-col items-center justify-center h-full gap-10">
               <Link href="#features" onClick={() => handleNavClick("#features")}>Features</Link>
           <Link href="#how-it-works" onClick={() => handleNavClick("#how-it-works")}>How it works</Link>

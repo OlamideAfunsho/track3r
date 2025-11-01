@@ -33,6 +33,27 @@ export default function NavLinks() {
 
   return (
     <>
+
+    {/* Mobile view */}
+    {links.slice(0, 3).map((link) => {
+        const LinkIcon = link.icon;
+        return (
+          <Link
+            key={link.name}
+            href={link.href}
+            className={clsx(
+              'flex md:hidden h-[48px] grow items-center justify-center gap-2 rounded-[5px] p-3 text-[12px] font-normal hover:bg-[#E9E8FF] text-[#8B97B4] hover:text-[#544DF2]',
+              {
+                'bg-[#E9E8FF] text-[#544DF2]': pathname === link.href,
+              },
+            )}
+          >
+            <Image src={link.icon} alt='nav-icons' />
+            <p className="hidden md:block">{link.name}</p>
+          </Link>
+        );
+      })}
+
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
@@ -40,7 +61,7 @@ export default function NavLinks() {
             key={link.name}
             href={link.href}
             className={clsx(
-              'flex h-[48px] grow items-center justify-center gap-2 rounded-[5px] p-3 text-[12px] font-normal hover:bg-[#E9E8FF] text-[#8B97B4] hover:text-[#544DF2] md:flex-none md:justify-start md:p-2 md:px-3',
+              'hidden md:flex h-[48px] grow items-center justify-center gap-2 rounded-[5px] p-3 text-[12px] font-normal hover:bg-[#E9E8FF] text-[#8B97B4] hover:text-[#544DF2] md:flex-none md:justify-start md:p-2 md:px-3',
               {
                 'bg-[#E9E8FF] text-[#544DF2]': pathname === link.href,
               },

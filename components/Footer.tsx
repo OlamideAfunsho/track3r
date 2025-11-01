@@ -11,7 +11,7 @@ const Footer = () => {
     <div className='bg-[#0D0D14] w-full h-auto md:h-[400px] px-10 md:px-20 py-15 overflow-hidden'>
     <div className=' flex flex-col gap-4 md:flex-row justify-between'>
         <div className='w-full md:w-1/5'>
-            <Image src={logoFooter} alt='track3r-logo' className='mb-4 w-40 md:w-auto'/>
+            <Image src={logoFooter} alt='track3r-logo' className='mb-4 "w-40" md:w-auto'/>
         <span className={`${dmSans.className} text-[#C8C8C8] `}>Track all your bills and subscriptions in one place with smart reminders.</span>
 
         </div>

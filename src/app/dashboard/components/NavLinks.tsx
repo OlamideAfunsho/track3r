@@ -54,6 +54,8 @@ export default function NavLinks() {
         );
       })}
 
+
+      {/* Desktop view */}
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (

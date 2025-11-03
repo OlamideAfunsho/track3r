@@ -17,9 +17,9 @@ const page = () => {
       </nav>
 
       <div className="container px-6 py-6">
-        <div className='flex gap-2'>
+        <div className='flex gap-2 items-center'>
           <h1 className={`${afacad.className} text-4xl tedxt-[##454141]`}>Welcome, <span className='text-[#544DF2]'>John</span></h1>
-        <Image src={waveEmoji} width={25} alt='waving-emoji' />
+        <Image src={waveEmoji} alt='waving-emoji' className='h-8 w-auto' />
         </div>
 
        <div className="flex flex-con justify-center gap-2 flex-wrap md:flex-row md:justify-between mt-4">

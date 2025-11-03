@@ -15,8 +15,8 @@ const SideBar = () => {
     <div className='flex flex-col h-full bg-[#FFFFFF] py-3 border-r'>
         <Link href='/'><Image src={logo} width={120} alt='track3r-logo' className='pl-3' /></Link>
 
-        <div className='flex gap-2 bg-[#FCFCFC] border-[#E0E0E0] border-[1px] rounded-[3px] my-4 mx-3 p-2'>
-          <Image src={searchIcon} width={16} alt='search-icon' />
+        <div className='flex items-center gap-2 bg-[#FCFCFC] border-[#E0E0E0] border-[1px] rounded-[3px] my-4 mx-3 p-2'>
+          <Image src={searchIcon} alt='search-icon' className='h-4 w-auto' />
           <input
          className={`${afacad.className} placeholder-[#999DA7] text-[14px] outline-none w-full`}
          type="text" 

@@ -12,13 +12,13 @@ import SubscriptionsCon from './components/SubscriptionsCon';
 const page = () => {
   return (
     <div className=''>
-      <nav className='w-full flex items-center px-5 bg-[#FFFFFF] h-[50px]'>
+      <div className='w-full flex items-center px-5 bg-[#FFFFFF] h-[50px]'>
         <h1 className={`${afacad.className} text-[#6D6666] text-2xl`}>Dashboard</h1>
-      </nav>
+      </div>
 
       <div className="container px-6 py-6">
         <div className='flex gap-2 items-center'>
-          <h1 className={`${afacad.className} text-4xl tedxt-[##454141]`}>Welcome, <span className='text-[#544DF2]'>John</span></h1>
+          <h1 className={`${afacad.className} text-4xl text-[##454141]`}>Welcome, <span className='text-[#544DF2]'>John</span></h1>
         <Image src={waveEmoji} alt='waving-emoji' className='h-8 w-auto' />
         </div>
 

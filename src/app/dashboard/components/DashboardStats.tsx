@@ -9,10 +9,19 @@ import activeSubscriptionsIcon from '../../../../public/activeSubscriptions-icon
 import upcomingRenewalsIcon from '../../../../public/upcomingRenewals-icon.svg';
 import expiredSubscriptionsIcon from '../../../../public/expiredSubscriptions-icon.svg';
 
+interface Bill {
+  id: string;
+  name: string;
+  amount: number;
+  due_date: string; // could also be Date if you parse it later
+  logo_url?: string | null;
+  created_at?: string;
+}
+
 const DashboardStats = () => {
     
 
-    const [bills, setBills] = useState<Record<string, any>[]>([])
+    const [bills, setBills] = useState<Bill[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,15 +35,21 @@ const DashboardStats = () => {
     fetchBills();
   }, []);
 
-  // Calculate stats
+  // ✅ Calculate stats safely
   const today = new Date();
-  const totalSpending = bills.reduce((sum, bill) => sum + bill.amount, 0);
+
+  const totalSpending = bills.reduce(
+    (sum, bill) => sum + (bill.amount || 0),
+    0
+  );
+
   const activeSubscriptions = bills.filter(
     bill => new Date(bill.due_date) > today
   ).length;
 
   const nextWeek = new Date();
   nextWeek.setDate(today.getDate() + 7);
+
   const upcomingRenewals = bills.filter(bill => {
     const due = new Date(bill.due_date);
     return due >= today && due <= nextWeek;

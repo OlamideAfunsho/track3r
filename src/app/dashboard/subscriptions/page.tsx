@@ -1,9 +1,7 @@
-import React from 'react'
 import { supabase } from "@/lib/supabaseClient";
-import Link from 'next/link';
-import { afacad } from '@/app/fonts';
+import SubscriptionsTable from '../components/SubscriptionsTable';
 
-const page = async () => {
+export default async function Page() {
   const { data: bills, error } = await supabase.from("bills").select("*");
 
   if (error) {
@@ -11,53 +9,11 @@ const page = async () => {
     return <p>Failed to load bills</p>;
   }
 
-  if (!bills || bills.length === 0) {
-    return (
-      <>
-        <p>No bills yet. Add one to get started!</p>
-        <Link href='/dashboard/add-bill'>Add Bill</Link>
-      </>
-
-    );
-  }
-
   return (
-     <div className="w-full md:w-3/5 p-4 border rounded-[7px] bg-[#F2F7FF] mt-6 ml-6">
-               <div className="overflow-x-auto">
-                 <table className={`${afacad.className} min-w-full text-sm text-left`}>
-                   <thead className="text-[#50545E] text-[16px]">
-                     <tr>
-                       <th className="px-6 py-3">Service</th>
-                       <th className="px-6 py-3">Amount</th>
-                       <th className="px-6 py-3">Due Date</th>
-                       <th className="px-6 py-3">Status</th>
-                     </tr>
-                   </thead>
-                   <tbody>
-                     {bills.map((bill) => (
-                       <tr
-                         key={bill.id}
-                         className=""
-                       >
-                         <td className="flex gap-1 items-center px-6 py-4 font-medium text-[#50545E]">
-                           {bill.logo_url && (
-                             <img
-                               src={bill.logo_url}
-                               alt={`${bill.title} logo`}
-                               className="w-6 h-6"
-                             />
-                           )}
-                           {bill.title}
-                         </td>
-                         <td className="px-6 py-4 text-[#50545E]">₦{bill.amount}</td>
-                         <td className="px-6 py-4 text-[#50545E]">{bill.due_date}</td>
-                       </tr>
-                     ))}
-                   </tbody>
-                 </table>
-               </div>
-             </div>
-  )
-}
+  <div className="px-1.5 py-10 h-fit ">
+  <SubscriptionsTable initialBills={bills || []} />
+  </div>
+  
 
-export default page
+);
+}

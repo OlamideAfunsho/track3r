@@ -6,6 +6,7 @@ import walletIcon from '../../../../public/dashboard-navlinks-icon-3.svg'
 import analyticsIcon from '../../../../public/dashboard-navlinks-icon-4.svg'
 import sharedBillsIcon from '../../../../public/dashboard-navlinks-icon-5.svg'
 import calendarIcon from '../../../../public/dashboard-navlinks-icon-6.svg'
+import logOUtIcon from '../../../../public/dashboard-navlinks-icon-9.svg'
 
 
 import Link from 'next/link';
@@ -24,8 +25,20 @@ const links = [
   { name: 'Wallet', href: '/dashboard/wallet', icon: walletIcon },
   { name: 'Analytics', href: '/dashboard/analytics', icon: analyticsIcon },
   { name: 'Shared Bills', href: '/dashboard/sharedBills', icon: sharedBillsIcon },
-  { name: 'Calendar', href: '/dashboard/calendar', icon: calendarIcon },
+  { name: 'Calendar', href: '/dashboard/calendar', icon: logOUtIcon },
 ];
+
+const mobileLinks = [
+  { name: 'Dashboard', href: '/dashboard', icon: dashboardIcon },
+  {
+    name: 'My Subscriptions',
+    href: '/dashboard/subscriptions',
+    icon: subscriptionsIcon,
+  },
+  { name: 'Wallet', href: '/dashboard/wallet', icon: walletIcon },
+  { name: 'Log out', href: '', icon: analyticsIcon },
+];
+
 
 export default function NavLinks() {
 
@@ -35,7 +48,7 @@ export default function NavLinks() {
     <>
 
     {/* Mobile view */}
-    {links.slice(0, 3).map((link) => {
+    {mobileLinks.map((link) => {
         const LinkIcon = link.icon;
         return (
           <Link
@@ -48,7 +61,9 @@ export default function NavLinks() {
               },
             )}
           >
-            <Image src={link.icon} alt='nav-icons' />
+            <Image src={link.icon} alt='nav-icons'
+            style={{ filter: pathname === link.href ? 'invert(28%) sepia(89%) saturate(4200%) hue-rotate(232deg) brightness(91%) contrast(101%)' : 'invert(53%) sepia(13%) saturate(582%) hue-rotate(186deg) brightness(93%) contrast(86%)' }}
+            />
             <p className="hidden md:block">{link.name}</p>
           </Link>
         );
@@ -69,7 +84,9 @@ export default function NavLinks() {
               },
             )}
           >
-            <Image src={link.icon} alt='nav-icons' />
+            <Image src={link.icon} alt='nav-icons'
+            style={{ filter: pathname === link.href ? 'invert(28%) sepia(89%) saturate(4200%) hue-rotate(232deg) brightness(91%) contrast(101%)' : 'invert(53%) sepia(13%) saturate(582%) hue-rotate(186deg) brightness(93%) contrast(86%)' }}
+             />
             <p className="hidden md:block">{link.name}</p>
           </Link>
         );

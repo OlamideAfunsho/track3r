@@ -16,7 +16,6 @@ export default function AddBillForm() {
     setLoading(true);
 
     const logo_url = getLogoUrl(title);
-    console.log("Detected logo URL:", logo_url);
 
     const { data, error } = await supabase.from("bills").insert([
       { title, amount: Number(amount), due_date: dueDate, logo_url },
@@ -36,7 +35,7 @@ export default function AddBillForm() {
   };
 
   return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex justify-center items-center md:h-full">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-[300px]">
       <input
         type="text"

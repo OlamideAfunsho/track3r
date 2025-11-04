@@ -37,6 +37,7 @@ const DashboardStats = () => {
 
   const today = new Date();
 
+
   const totalSpending = bills.reduce(
     (sum, bill) => sum + (bill.amount || 0),
     0
@@ -50,9 +51,9 @@ const DashboardStats = () => {
   nextWeek.setDate(today.getDate() + 7);
 
   const upcomingRenewals = bills.filter(bill => {
-    const due = new Date(bill.due_date);
-    return due >= today && due <= nextWeek;
-  }).length;
+  const due = new Date(bill.due_date);
+  return due > nextWeek;
+}).length;
 
   const expiredSubscriptions = bills.filter(
     bill => new Date(bill.due_date) < today

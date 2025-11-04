@@ -11,9 +11,9 @@ import expiredSubscriptionsIcon from '../../../../public/expiredSubscriptions-ic
 
 interface Bill {
   id: string;
-  name: string;
+  title: string;
   amount: number;
-  due_date: string; // could also be Date if you parse it later
+  due_date: string;
   logo_url?: string | null;
   created_at?: string;
 }
@@ -35,7 +35,6 @@ const DashboardStats = () => {
     fetchBills();
   }, []);
 
-  // ✅ Calculate stats safely
   const today = new Date();
 
   const totalSpending = bills.reduce(

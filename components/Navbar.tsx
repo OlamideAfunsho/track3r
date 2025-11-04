@@ -71,7 +71,7 @@ const handleNavClick = (id: string) => {
         </div>
         <div className="login-links hidden md:block tracking-wider">
           <span>Login</span>
-          <button className="bg-[#544DF2] text-white px-[30px] py-[12px] rounded-[49px] ml-4">
+          <button className="bg-[#544DF2] text-white px-[30px] py-[12px] rounded-[49px] ml-4 shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1]">
             Get started
           </button>
         </div>

@@ -19,7 +19,7 @@ const Hero = () => {
       </p>
 
       <div className="btns mt-6 mb-8 flex flex-col sm:flex-row justify-center w-10/12 m-auto sm:w-full gap-3">
-        <button className="bg-[#544DF2] text-white px-[30px] py-[12px] rounded-[49px] tracking-wide">
+        <button className="bg-[#544DF2] text-white px-[30px] py-[12px] rounded-[49px] tracking-wide shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1]">
           Start tracking now
         </button>
         <button className="flex justify-center gap-2.5 bg-[#FFFFFF] text-[#544DF2] px-[30px] py-[12px] rounded-[49px] tracking-wide">

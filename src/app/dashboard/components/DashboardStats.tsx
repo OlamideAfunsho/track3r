@@ -43,17 +43,22 @@ const DashboardStats = () => {
     0
   );
 
-  const activeSubscriptions = bills.filter(
-    bill => new Date(bill.due_date) > today
-  ).length;
+//   const upcomingSubscriptions = bills.filter(
+//     bill => new Date(bill.due_date) > today
+//   ).length;
 
   const nextWeek = new Date();
   nextWeek.setDate(today.getDate() + 7);
 
-  const upcomingRenewals = bills.filter(bill => {
+  const upcomingSubscriptions = bills.filter(bill => {
   const due = new Date(bill.due_date);
   return due > nextWeek;
 }).length;
+
+const dueSubscriptions = bills.filter(bill => {
+    const due = new Date(bill.due_date);
+    return due >= today && due <= nextWeek;
+  }).length;
 
   const expiredSubscriptions = bills.filter(
     bill => new Date(bill.due_date) < today
@@ -64,8 +69,8 @@ const DashboardStats = () => {
   return (
     <div className="flex flex-con justify-center gap-2 flex-wrap md:flex-row md:justify-between mt-4 mb-4">
           <Cards title='Total Spendings' value={`₦${totalSpending}`} src={totalSpendingsIcon} />
-          <Cards title='Active Subscriptions' value={activeSubscriptions} src={activeSubscriptionsIcon} />
-          <Cards title='Upcoming Renewals' value={upcomingRenewals} src={upcomingRenewalsIcon} />
+          <Cards title='Upcoming Subscriptions' value={upcomingSubscriptions} src={activeSubscriptionsIcon} />
+          <Cards title='Due Subscriptions' value={dueSubscriptions} src={upcomingRenewalsIcon} />
           <Cards title='Expired Subscriptions' value={expiredSubscriptions} src={expiredSubscriptionsIcon} />
         </div>
   )

@@ -63,12 +63,14 @@ const page = async () => {
           <h1 className={`${afacad.className} text-4xl text-[##454141]`}>Welcome, <span className='text-[#544DF2]'>John</span></h1>
           <Image src={waveEmoji} alt='waving-emoji' className='h-8 w-auto' />
 
-          <Link href='/dashboard/add-bill' className='bg-[#544DF2] text-[14px] text-[#FFFFFF] px-[16px] py-[6px] rounded-[8px] absolute right-6 hover:bg-[rgba(84,77,242,0.8)]'>
+          <Link href='/dashboard/add-bill' className='bg-[#544DF2] text-[14px] text-[#FFFFFF] px-[16px] py-[6px] rounded-[8px] right-0 hover:bg-[rgba(84,77,242,0.8)] shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1]'>
             Add Bill <span className='text-[20px]'>+</span>
           </Link>
         </div>
 
       <DashboardStats />
+
+      
 
 
         <h1 className={`${afacad.className} text-[#667085] text-[18px] mt-10`}>Subscriptions</h1>

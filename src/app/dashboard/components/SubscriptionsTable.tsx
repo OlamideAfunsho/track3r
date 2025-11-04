@@ -76,6 +76,7 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
 
     return (
         <>
+        <h1 className={`${afacad.className} text-center md:text-left ml-6 mb-4 text-2xl`}>View <span className="text-[#544DF2]">All Your</span> Subscriptions</h1>
 
             <div className="w-full m-auto md:w-3/5 md:p-4 border rounded-[7px] bg-[#F2F7FF] md:mt-6 md:ml-6 mb-6">
                 <div className="overflow-x-auto">
@@ -121,7 +122,7 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
                 </div>
             </div>
 
-            <Link href='/dashboard/add-bill' className='bg-[#544DF2] text-[14px] text-[#FFFFFF] px-[20px] py-[10px] ml-6 rounded-[8px] hover:bg-[rgba(84,77,242,0.8)]'>
+            <Link href='/dashboard/add-bill' className='bg-[#544DF2] text-[14px] text-[#FFFFFF] px-[20px] py-[10px] ml-6 rounded-[8px] shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1] hover:bg-[rgba(84,77,242,0.8)]'>
                 Add Bill <span className='text-[20px]'>+</span>
             </Link>
         </>

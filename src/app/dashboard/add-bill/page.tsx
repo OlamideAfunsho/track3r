@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { afacad } from "@/app/fonts";
+import { getLogoUrl } from "@/lib/getLogoUrl";
 
 export default function AddBillForm() {
   const [title, setTitle] = useState("");
@@ -14,8 +15,11 @@ export default function AddBillForm() {
     e.preventDefault();
     setLoading(true);
 
+    const logo_url = getLogoUrl(title);
+    console.log("Detected logo URL:", logo_url);
+
     const { data, error } = await supabase.from("bills").insert([
-      { title, amount: Number(amount), due_date: dueDate },
+      { title, amount: Number(amount), due_date: dueDate, logo_url },
     ]);
 
     if (error) {

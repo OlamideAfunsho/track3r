@@ -22,31 +22,41 @@ const page = async () => {
   }
 
   return (
-     <div className="w-full md:w-3/5 p-4 border rounded-[7px] bg-[#F2F7FF]">
-         <div className="overflow-x-auto">
-        <table className={`${afacad.className} min-w-full text-sm text-left`}>
-          <thead className="text-[#50545E] text-[16px]">
-            <tr>
-              <th className="px-6 py-3">Service</th>
-              <th className="px-6 py-3">Amount</th>
-              <th className="px-6 py-3">Due Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bills.map((bill) => (
-                <tr
-                  key={bill.id}
-                  className=""
-                >
-                  <td className="px-6 py-4 font-medium">{bill.title}</td>
-                  <td className="px-6 py-4">₦{bill.amount}</td>
-                  <td className="px-6 py-4">{bill.due_date}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </div>
-        </div>
+     <div className="w-full md:w-3/5 p-4 border rounded-[7px] bg-[#F2F7FF] mt-6 ml-6">
+               <div className="overflow-x-auto">
+                 <table className={`${afacad.className} min-w-full text-sm text-left`}>
+                   <thead className="text-[#50545E] text-[16px]">
+                     <tr>
+                       <th className="px-6 py-3">Service</th>
+                       <th className="px-6 py-3">Amount</th>
+                       <th className="px-6 py-3">Due Date</th>
+                       <th className="px-6 py-3">Status</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     {bills.map((bill) => (
+                       <tr
+                         key={bill.id}
+                         className=""
+                       >
+                         <td className="flex gap-1 items-center px-6 py-4 font-medium text-[#50545E]">
+                           {bill.logo_url && (
+                             <img
+                               src={bill.logo_url}
+                               alt={`${bill.title} logo`}
+                               className="w-6 h-6"
+                             />
+                           )}
+                           {bill.title}
+                         </td>
+                         <td className="px-6 py-4 text-[#50545E]">₦{bill.amount}</td>
+                         <td className="px-6 py-4 text-[#50545E]">{bill.due_date}</td>
+                       </tr>
+                     ))}
+                   </tbody>
+                 </table>
+               </div>
+             </div>
   )
 }
 

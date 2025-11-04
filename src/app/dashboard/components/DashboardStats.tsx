@@ -10,8 +10,9 @@ import upcomingRenewalsIcon from '../../../../public/upcomingRenewals-icon.svg';
 import expiredSubscriptionsIcon from '../../../../public/expiredSubscriptions-icon.svg';
 
 const DashboardStats = () => {
+    
 
-    const [bills, setBills] = useState<any[]>([]);
+    const [bills, setBills] = useState<Record<string, any>[]>([])
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

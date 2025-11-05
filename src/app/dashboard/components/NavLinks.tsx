@@ -25,7 +25,7 @@ const links = [
   { name: 'Wallet', href: '/dashboard/wallet', icon: walletIcon },
   { name: 'Analytics', href: '/dashboard/analytics', icon: analyticsIcon },
   { name: 'Shared Bills', href: '/dashboard/sharedBills', icon: sharedBillsIcon },
-  { name: 'Calendar', href: '/dashboard/calendar', icon: logOUtIcon },
+  { name: 'Calendar', href: '/dashboard/calendar', icon: calendarIcon },
 ];
 
 const mobileLinks = [
@@ -36,7 +36,7 @@ const mobileLinks = [
     icon: subscriptionsIcon,
   },
   { name: 'Wallet', href: '/dashboard/wallet', icon: walletIcon },
-  { name: 'Log out', href: '', icon: analyticsIcon },
+  { name: 'Log out', href: '', icon: logOUtIcon },
 ];
 
 

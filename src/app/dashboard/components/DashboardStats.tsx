@@ -67,7 +67,7 @@ const dueSubscriptions = bills.filter(bill => {
   if (loading) return <p>Loading stats...</p>;
 
   return (
-    <div className="flex flex-con justify-center gap-2 flex-wrap md:flex-row md:justify-between mt-4 mb-4">
+    <div className="flex flex-con justify-center gap-2 flex-wrap md:flex-nowrap lg:flex-row md:justify-between mt-4 mb-4">
           <Cards title='Total Spendings' value={`₦${totalSpending}`} src={totalSpendingsIcon} />
           <Cards title='Upcoming Subscriptions' value={upcomingSubscriptions} src={activeSubscriptionsIcon} />
           <Cards title='Due Subscriptions' value={dueSubscriptions} src={upcomingRenewalsIcon} />

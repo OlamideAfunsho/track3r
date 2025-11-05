@@ -59,9 +59,12 @@ const page = async () => {
       </div>
 
     <div className="container px-6 py-6">
-        <div className='flex gap-2 items-center'>
-          <h1 className={`${afacad.className} text-4xl text-[##454141]`}>Welcome, <span className='text-[#544DF2]'>John</span></h1>
+        <div className='flex gap-2 items-center justify-between'>
+          <div className='flex items-center'>
+             <h1 className={`${afacad.className} text-2xl md:text-3xl lg:text-4xl text-[##454141]`}>Welcome, <span className='text-[#544DF2]'>John</span></h1>
           <Image src={waveEmoji} alt='waving-emoji' className='h-8 w-auto' />
+          </div>
+         
 
           <Link href='/dashboard/add-bill' className='bg-[#544DF2] text-[14px] text-[#FFFFFF] px-[16px] py-[6px] rounded-[8px] right-0 hover:bg-[rgba(84,77,242,0.8)] shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1]'>
             Add Bill <span className='text-[20px]'>+</span>
@@ -76,7 +79,7 @@ const page = async () => {
         <h1 className={`${afacad.className} text-[#667085] text-[18px] mt-10`}>Subscriptions</h1>
         <Link href='/dashboard/subscriptions' className={`${afacad.className} text-[#9C98F7] text-[16px]`}>Manage your subscriptions</Link>
         {/* Subscriptions Table */}
-        <div className="w-full md:w-3/5 p-4 border rounded-[7px] bg-[#F2F7FF] mt-4">
+        <div className="w-full md:w-full lg:w-3/5 p-4 border rounded-[7px] bg-[#F2F7FF] mt-4">
           <div className="overflow-x-auto">
             <table className={`${afacad.className} min-w-full text-sm text-left`}>
               <thead className="text-[#50545E] text-[16px]">

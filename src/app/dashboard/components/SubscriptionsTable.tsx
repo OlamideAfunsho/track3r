@@ -6,6 +6,7 @@ import Image from "next/image";
 import trashIcon from "../../../../public/trash-icon.svg";
 import Link from "next/link";
 import { afacad } from "@/app/fonts";
+import { toast, ToastContainer } from "react-toastify";
 
 interface Bill {
     id: string;
@@ -29,17 +30,23 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
         return "Upcoming";
     };
 
-    const handleDelete = async (id: string) => {
-        const { error } = await supabase.from("bills").delete().eq("id", id);
+    const handleDelete = async (billId: string) => {
+  try {
+    const response = await fetch(`/api/bills/${billId}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
 
-        if (error) {
-            console.error("Error deleting bill:", error);
-            alert("Error deleting bill");
-        } else {
-            setBills((prevBills) => prevBills.filter((bill) => bill.id !== id));
-            alert("Bill deleted successfully!");
-        }
-    };
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Failed to delete bill");
+    }
+
+  } catch (error) {
+    console.error("Error deleting bill:", error);
+  }
+};
+
 
     const confirmDelete = (id: string) => {
         if (confirm("Are you sure you want to delete this bill?")) {
@@ -76,6 +83,7 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
 
     return (
         <>
+        <ToastContainer position="top-right" autoClose={2000}/>
         <h1 className={`${afacad.className} text-center md:text-left ml-6 mb-4 text-2xl`}>View <span className="text-[#544DF2]">All Your</span> Subscriptions</h1>
 
             <div className="w-full m-auto md:w-3/5 md:p-4 border rounded-[7px] bg-[#F2F7FF] md:mt-6 md:ml-6 mb-6">

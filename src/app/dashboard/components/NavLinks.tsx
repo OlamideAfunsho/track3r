@@ -15,6 +15,7 @@ import clsx from 'clsx';
 import Image from 'next/image'
 
 
+
 const links = [
   { name: 'Dashboard', href: '/dashboard', icon: dashboardIcon },
   {
@@ -28,19 +29,10 @@ const links = [
   { name: 'Calendar', href: '/dashboard/calendar', icon: calendarIcon },
 ];
 
-const mobileLinks = [
-  { name: 'Dashboard', href: '/dashboard', icon: dashboardIcon },
-  {
-    name: 'My Subscriptions',
-    href: '/dashboard/subscriptions',
-    icon: subscriptionsIcon,
-  },
-  { name: 'Wallet', href: '/dashboard/wallet', icon: walletIcon },
-  { name: 'Log out', href: '', icon: logOUtIcon },
-];
-
 
 export default function NavLinks() {
+
+
 
   const pathname = usePathname();
 
@@ -48,7 +40,7 @@ export default function NavLinks() {
     <>
 
     {/* Mobile view */}
-    {mobileLinks.map((link) => {
+    {links.slice(0, 3).map((link) => {
         const LinkIcon = link.icon;
         return (
           <Link

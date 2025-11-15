@@ -1,4 +1,3 @@
-// app/api/bills/[id]/route.ts
 import { auth } from "../../../../../auth";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
@@ -20,7 +19,7 @@ async function createSupabaseServerClient() {
   );
 }
 
-export async function DELETE(_: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: { id: string } }) {
   const session = await auth();
 
   if (!session?.user?.id) {

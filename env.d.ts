@@ -10,5 +10,6 @@ declare namespace NodeJS {
     SUPABASE_JWT_SECRET:string;
     SUPABASE_SERVICE_ROLE_KEY:string;
     NEXTAUTH_SECRET:string;
+    SUPABASE_URL: string;
   }
 }

@@ -1,16 +1,46 @@
-import SubscriptionsTable from "../components/SubscriptionsTable";
+import { cookies } from "next/headers";
+import { createServerClient } from "@supabase/ssr";
+import SubscriptionsTable from "@/app/dashboard/components/SubscriptionsTable";
 
 export default async function Page() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/bills`, {
-      cache: "no-store", // ensures fresh data each time
-    });
+    // Cookies() must be awaited now
+    const cookieStore = await cookies();
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch bills");
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!, // server-only key
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+        },
+      }
+    );
+
+    // Get authenticated user
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      return (
+        <div className="text-center mt-10">
+          <p>You must be logged in to view your subscriptions.</p>
+        </div>
+      );
     }
 
-    const { bills } = await res.json();
+    // Fetch user's bills
+    const { data: bills, error } = await supabase
+      .from("bills")
+      .select("*")
+      .eq("user_id", user.id)
+      .order("due_date", { ascending: true });
+
+    if (error) throw error;
 
     return (
       <div className="px-1.5 py-10 h-fit">

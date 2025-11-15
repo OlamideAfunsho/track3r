@@ -94,7 +94,7 @@ const Page = () => {
       <div className="py-20 px-6">
         <div className="flex flex-col items-start md:flex-row gap-2 md:items-center justify-between">
           <div className="flex items-center mb-4">
-            <h1 className={`${afacad.className} text-2xl md:text-3xl lg:text-4xl`}>
+            <h1 className={`${afacad.className} text-2xl font-medium md:text-3xl lg:text-4xl`}>
               Welcome, <span className="text-[#544DF2]">{session?.user?.name}</span>
             </h1>
             <Image src={waveEmoji} alt="waving-emoji" className="h-8 w-auto" />
@@ -138,7 +138,7 @@ const Page = () => {
       <div className="container px-6 py-6">
         <div className="flex flex-col items-start md:flex-row gap-2 md:items-center justify-between">
           <div className="flex items-center">
-            <h1 className={`${afacad.className} text-2xl md:text-3xl lg:text-4xl`}>
+            <h1 className={`${afacad.className} text-2xl font-medium md:text-3xl lg:text-4xl`}>
               Welcome, <span className="text-[#544DF2]">{session?.user?.name}</span>
             </h1>
             <Image src={waveEmoji} alt="waving-emoji" className="h-8 w-auto" />

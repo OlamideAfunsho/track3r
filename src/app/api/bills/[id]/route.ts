@@ -1,27 +1,43 @@
+// app/api/bills/[id]/route.ts
+import { auth } from "../../../../../auth";
 import { NextResponse } from "next/server";
-import { createServerSupabaseClient } from "@/lib/supabaseServerClient"; // we'll add this next
+import { cookies } from "next/headers";
+import { createServerClient } from "@supabase/ssr";
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
-  const supabase = createServerSupabaseClient();
+async function createSupabaseServerClient() {
+  const cookieStore = await cookies();
 
-  // Get the logged-in user
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value;
+        },
+      },
+    }
+  );
+}
+
+export async function DELETE(_: Request, { params }: { params: { id: string } }) {
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+
+  const supabase = await createSupabaseServerClient();
 
   const { error } = await supabase
     .from("bills")
     .delete()
     .eq("id", params.id)
-    .eq("user_id", user.id); // ensures they can only delete their own bill
+    .eq("user_id", session.user.id);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json({ message: "Bill deleted successfully" });
+  return NextResponse.json({ message: "Bill deleted" });
 }

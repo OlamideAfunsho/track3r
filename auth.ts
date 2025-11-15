@@ -1,8 +1,9 @@
+// auth.ts (NextAuth v5)
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
-import { supabase } from "@/lib/supabaseServer"; // create a server-side client
+import { supabase } from "@/lib/supabaseServer";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
@@ -16,48 +17,110 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Credentials({
       name: "credentials",
       credentials: {
-        email: {},
-        password: {},
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
       },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) return null;
+
+      async authorize(
+        credentials: Partial<Record<"email" | "password", unknown>>
+      ) {
+        const email = credentials.email as string | undefined;
+        const password = credentials.password as string | undefined;
+
+        if (!email || !password) return null;
 
         // Fetch user from Supabase
         const { data: user, error } = await supabase
           .from("users")
           .select("*")
-          .eq("email", credentials.email)
+          .eq("email", email)
           .single();
 
         if (error || !user) return null;
 
-        const isValid = await compare(credentials.password, user.password);
+        const isValid = await compare(password, user.password);
         if (!isValid) return null;
 
         return {
           id: user.id,
           name: user.name,
           email: user.email,
-          image: user.image || null,
+          image: user.image ?? null,
         };
       },
     }),
   ],
 
   callbacks: {
-    async jwt({ token, user }) {
-      // When user logs in
+    async signIn({
+  user,
+  account,
+}: {
+  user: any;
+  account?: any;
+}) {
+  const userEmail = user.email;
+
+  const { data: existingUser } = await supabase
+    .from("users")
+    .select("*")
+    .eq("email", userEmail)
+    .maybeSingle();
+
+  if (!existingUser) {
+    await supabase.from("users").insert([
+      {
+        id: crypto.randomUUID(),
+        name: user.name || userEmail.split("@")[0],
+        email: userEmail,
+        provider: account?.provider,
+        image: user.image ?? null,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      },
+    ]);
+  }
+
+  return true;
+},
+
+
+    async jwt({
+      token,
+      user,
+    }: {
+      token: Record<string, any>;
+      user?: any;
+    }) {
       if (user) {
         token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.picture = user.image ?? null;
       }
       return token;
     },
 
-    async session({ session, token }) {
-      if (token?.id) {
-        session.user.id = token.id as string;
-      }
+    async session({
+      session,
+      token,
+    }: {
+      session: any;
+      token: Record<string, any>;
+    }) {
+      session.user = {
+        id: token.id,
+        name: token.name,
+        email: token.email,
+        image: token.picture,
+      };
       return session;
     },
   },
+
+  pages: {
+    signIn: "/login",
+  },
+
+  secret: process.env.AUTH_SECRET_KEY,
 });

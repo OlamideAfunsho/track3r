@@ -30,12 +30,12 @@ export default function AddBillForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          title,
-          amount: Number(amount),
-          due_date: dueDate,
-          logo_url,
-          user_id: session.user.id, // link bill to logged-in user
-        }),
+  title,
+  amount: Number(amount),
+  due_date: dueDate,
+  logo_url,
+}),
+
       });
 
       const data = await res.json();

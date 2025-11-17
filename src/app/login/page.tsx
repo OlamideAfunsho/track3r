@@ -52,7 +52,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col gap-2 items-center justify-center bg-gray-50">
-      <Image src={logo} alt="trac3r-logo" className="w-40" />
+      <Link href='/'><Image src={logo} alt="trac3r-logo" className="w-40" /></Link>
       <div className="w-full max-w-sm bg-white p-6 rounded-xl shadow-md">
         <h1 className="text-2xl text-[#544DF2] font-semibold text-center mb-1">Sign In</h1>
         <p className="text-center text-[#929297] mb-6">Please sign in to continue</p>

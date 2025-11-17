@@ -61,7 +61,7 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
         <p>No bills yet. Add one to get started!</p>
         <Link
           href="/dashboard/add-bill"
-          className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-[16px] py-[6px] rounded-[8px] hover:bg-[rgba(84,77,242,0.8)]"
+          className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-4 py-1.5 rounded-xl hover:bg-[rgba(84,77,242,0.8)]"
         >
           Add Bill <span className="text-[20px]">+</span>
         </Link>
@@ -95,11 +95,10 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
           <table className={`${afacad.className} min-w-full text-sm text-left`}>
             <thead className="text-[#50545E] text-[16px]">
               <tr>
-                <th className="px-6 py-4">Service</th>
-                <th className="px-6 py-4">Amount</th>
-                <th className="px-6 py-4">Due Date</th>
-                <th className="px-6 py-4">Status</th>
-                <th className="px-6 py-4 text-center">Action</th>
+                <th className="px-4 py-2">Service</th>
+                <th className="px-2 py-2">Amount</th>
+                <th className="px-2 py-2">Due Date</th>
+                <th className="px-2 py-2">Status</th>
               </tr>
             </thead>
 
@@ -109,27 +108,27 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
                 const statusColor = getStatusColor(status);
 
                 return (
-                  <tr key={bill.id} className="border-t">
-                    <td className="flex gap-2 items-center px-6 py-4 text-[#50545E] font-medium">
+                  <tr key={bill.id} className="">
+                    <td className="flex gap-1 items-center px-4 py-2.5 mr-2 md:mr-0 text-[#50545E] font-medium">
                       {bill.logo_url && (
                         <img src={bill.logo_url} alt="logo" className="w-6 h-6" />
                       )}
                       {bill.title}
                     </td>
 
-                    <td className="px-6 py-4 text-[#50545E]">
+                    <td className="px-2 text-[#50545E]">
                       ₦{bill.amount.toLocaleString()}
                     </td>
 
-                    <td className="px-6 py-4 text-[#50545E]">
+                    <td className="px-2 text-[#50545E]">
                       {new Date(bill.due_date).toLocaleDateString()}
                     </td>
 
-                    <td className={`px-6 py-4 font-medium ${statusColor}`}>
+                    <td className={`px-2 font-bold ${statusColor}`}>
                       {status}
                     </td>
 
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-4 text-center">
                       <button onClick={() => confirmDelete(bill.id)}>
                         <Image
                           src={trashIcon}
@@ -148,7 +147,7 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
 
       <Link
         href="/dashboard/add-bill"
-        className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-[20px] py-[10px] ml-6 rounded-[8px] shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1] hover:bg-[rgba(84,77,242,0.8)]"
+        className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-5 py-2.5 ml-6 rounded-xl shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1] hover:bg-[rgba(84,77,242,0.8)]"
       >
         Add Bill <span className="text-[20px]">+</span>
       </Link>

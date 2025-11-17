@@ -5,6 +5,7 @@ import leftArrow from "../public/arrow-1.svg";
 import rightArrow from "../public/arrow-2.svg";
 import Image from "next/image";
 import { dmSans } from "@/app/fonts";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -19,10 +20,10 @@ const Hero = () => {
       </p>
 
       <div className="btns mt-6 mb-8 flex flex-col sm:flex-row justify-center w-10/12 m-auto sm:w-full gap-3">
-        <button className="bg-[#544DF2] text-white px-[30px] py-[12px] rounded-[49px] tracking-wide shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1]">
+        <Link href='/dashboard' className="bg-[#544DF2] text-white px-[30px] py-3 rounded-[49px] tracking-wide shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1]">
           Start tracking now
-        </button>
-        <button className="flex justify-center gap-2.5 bg-[#FFFFFF] text-[#544DF2] px-[30px] py-[12px] rounded-[49px] tracking-wide">
+        </Link>
+        <button className="flex justify-center gap-2.5 bg-[#FFFFFF] text-[#544DF2] px-[30px] py-3 rounded-[49px] tracking-wide">
           <Image src={playIcon} width={24} alt="play-icon" />
           Watch demo
         </button>

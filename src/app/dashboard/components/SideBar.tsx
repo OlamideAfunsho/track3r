@@ -14,7 +14,7 @@ const SideBar = () => {
     <div className='flex flex-col h-full bg-[#FFFFFF] py-3'>
         <Link href='/'><Image src={logo} alt='track3r-logo' className='pl-3 md:w-30' /></Link>
 
-        <div className='flex items-center gap-2 bg-[#FCFCFC] border-[#E0E0E0] border-[1px] rounded-[3px] my-4 mx-3 h-[40px] p-2'>
+        <div className='flex items-center gap-2 bg-[#FCFCFC] border-[#E0E0E0] border rounded-[3px] my-4 mx-3 h-10 p-2'>
           <Image src={searchIcon} alt='search-icon' className='w-auto h-4' />
           <input
          className="placeholder-[#999DA7] text-[12px] outline-none w-full"
@@ -25,7 +25,7 @@ const SideBar = () => {
         </div>
         
 
-        <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-1">
+        <div className="flex grow flex-row justify-between ml-3 mr-3 sm:ml-0 sm:mr-3  md:flex-col md:space-x-0 md:space-y-1">
         <NavLinks />
         <div className="hidden h-auto w-full grow rounded-md md:block"></div>
         <form className='hidden md:block'>

@@ -1,10 +1,9 @@
 {
-  "cron": {
-    "jobs": [
-      {
-        "path": "/api/cron/due-reminders",
-        "schedule": "0 8 * * *"
-      }
-    ]
-  }
+  "version": 2,
+  "crons": [
+    {
+      "path": "/api/cron/due-reminders",
+      "schedule": "0 8 * * *"
+    }
+  ]
 }

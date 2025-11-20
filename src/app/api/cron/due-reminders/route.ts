@@ -1,7 +1,9 @@
+// app/api/cron/due-reminders/route.ts
 import { NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { sendEmail } from "@/lib/sendEmail";
 
+// Create Supabase server client with service role key
 async function supabaseAdmin() {
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -16,10 +18,16 @@ async function supabaseAdmin() {
   );
 }
 
-export async function GET() {
+export async function GET(req: Request) {
+  // 1️⃣ Check CRON_SECRET for security
+  const authHeader = req.headers.get("Authorization");
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const supabase = await supabaseAdmin();
 
-  // Load all bills + related user info
+  // 2️⃣ Fetch all bills + user info
   const { data: bills, error } = await supabase
     .from("bills")
     .select(`
@@ -48,9 +56,9 @@ export async function GET() {
     if (!user || !user.email) continue;
 
     const email = user.email;
-    const name = user.name || "there";
+    const name = user.name ?? "there";
 
-    // 1. BILL DUE SOON — 7 days before
+    // 3️⃣ Bill due soon (7 days before)
     const isDueSoon =
       due >= today &&
       due <= nextWeek &&
@@ -60,15 +68,13 @@ export async function GET() {
       await sendEmail(
         email,
         "Your bill is due soon",
-        `
-          <p>Hi ${name},</p>
-          <p>Your bill is due soon:</p>
-          <ul>
-            <li><b>Title:</b> ${bill.title}</li>
-            <li><b>Amount:</b> ${bill.amount}</li>
-            <li><b>Due Date:</b> ${bill.due_date}</li>
-          </ul>
-        `
+        `<p>Hi ${name},</p>
+         <p>Your bill is due soon:</p>
+         <ul>
+           <li><b>Title:</b> ${bill.title}</li>
+           <li><b>Amount:</b> ${bill.amount}</li>
+           <li><b>Due Date:</b> ${bill.due_date}</li>
+         </ul>`
       );
 
       await supabase
@@ -77,7 +83,7 @@ export async function GET() {
         .eq("id", bill.id);
     }
 
-    // 2. BILL DUE TODAY
+    // 4️⃣ Bill due today
     const isDueToday =
       due.toDateString() === today.toDateString() &&
       bill.notified_due_today !== true;
@@ -86,15 +92,13 @@ export async function GET() {
       await sendEmail(
         email,
         "Bill due today",
-        `
-          <p>Hi ${name},</p>
-          <p>Your bill is due today:</p>
-          <ul>
-            <li><b>Title:</b> ${bill.title}</li>
-            <li><b>Amount:</b> ${bill.amount}</li>
-            <li><b>Due Date:</b> ${bill.due_date}</li>
-          </ul>
-        `
+        `<p>Hi ${name},</p>
+         <p>Your bill is due today:</p>
+         <ul>
+           <li><b>Title:</b> ${bill.title}</li>
+           <li><b>Amount:</b> ${bill.amount}</li>
+           <li><b>Due Date:</b> ${bill.due_date}</li>
+         </ul>`
       );
 
       await supabase
@@ -104,5 +108,5 @@ export async function GET() {
     }
   }
 
-  return NextResponse.json({ message: "Due bills checked" });
+  return NextResponse.json({ message: "Due bills checked successfully" });
 }

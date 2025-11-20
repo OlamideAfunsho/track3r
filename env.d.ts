@@ -13,5 +13,7 @@ declare namespace NodeJS {
     SUPABASE_URL: string;
     SENDGRID_API_KEY:string;
     SENDGRID_SENDER:string;
+    RESEND_API_KEY:string;
+    CRON_SECRET:string;
   }
 }

@@ -1,10 +1,8 @@
-// src/app/api/bills/[id]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "../../../../../auth";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
-// Create a Supabase client for server-side use
 async function createSupabaseServerClient() {
   const cookieStore = await cookies();
   return createServerClient(
@@ -20,23 +18,22 @@ async function createSupabaseServerClient() {
   );
 }
 
-// DELETE /api/bills/[id]
-export async function DELETE(request: NextRequest, context: { params: { id: string } }) {
-  const { params } = context;
+export async function DELETE(
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
+) {
+  const { id } = await context.params; // ← IMPORTANT FIX
 
-  // Authenticate user
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const supabase = await createSupabaseServerClient();
-
-  // Delete the bill for the authenticated user
   const { error } = await supabase
     .from("bills")
     .delete()
-    .eq("id", params.id)
+    .eq("id", id)
     .eq("user_id", session.user.id);
 
   if (error) {

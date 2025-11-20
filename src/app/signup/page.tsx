@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import logo from '../../../public/logo.svg';
+import logo from "../../../public/logo.svg";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 export default function SignupPage() {
   const [name, setName] = useState("");
@@ -15,55 +15,56 @@ export default function SignupPage() {
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
+  e.preventDefault();
+  setError("");
+  setSuccess("");
 
-    try {
-      const res = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, password }),
-      });
+  try {
+    const res = await fetch("/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, password }),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.error || "Signup failed");
-      }
-
-      setSuccess("Account created successfully!");
-      setName("");
-      setEmail("");
-      setPassword("");
-
-      // Optionally, sign in automatically
-      await signIn("credentials", { redirect: false, email: data.email, password });
-
-      // Redirect to dashboard after 1.5s
-      setTimeout(() => router.push("/dashboard"), 1500);
-    } catch (err: any) {
-      setError(err.message);
+    if (!res.ok) {
+      throw new Error(data.error || "Signup failed");
     }
-  };
+
+    setSuccess("Account created! Please check your email.");
+    setName("");
+    setEmail("");
+    setPassword("");
+
+    // Redirect straight to verify page — DO NOT sign in
+    router.push(`/verify?email=${data.email}`);
+
+  } catch (err: any) {
+    setError(err.message);
+  }
+};
+
 
   return (
     <div className="flex flex-col gap-2 min-h-screen items-center justify-center">
-      <Image src={logo} alt="trac3r-logo" className="w-40" />
+      <Link href='/'><Image src={logo} alt="trac3r-logo" className="w-40" /></Link>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 p-6 border rounded-md w-[300px]"
+        className="flex flex-col gap-4 p-6 shadow-2xl rounded-md w-[300px]"
       >
-        <h1 className="text-xl font-semibold text-center text-[#544DF2]">Sign Up</h1>
+        <h1 className="text-xl font-semibold text-center text-[#544DF2]">
+          Sign Up
+        </h1>
 
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="border px-4 py-2 rounded-full text-[14px]"
+          className="border-b outline-none pr-4 py-2 text-[14px]"
           required
         />
 
@@ -72,7 +73,7 @@ export default function SignupPage() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border px-4 py-2 rounded-full text-[14px]"
+          className="border-b outline-none pr-4 py-2 text-[14px]"
           required
         />
 
@@ -81,7 +82,7 @@ export default function SignupPage() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border px-4 py-2 rounded-full text-[14px]"
+          className="border-b outline-none pr-4 py-2 text-[14px]"
           required
         />
 
@@ -93,7 +94,6 @@ export default function SignupPage() {
         </button>
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
-        {success && <p className="text-green-600 text-sm">{success}</p>}
       </form>
     </div>
   );

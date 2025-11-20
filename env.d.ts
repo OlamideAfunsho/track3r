@@ -11,5 +11,7 @@ declare namespace NodeJS {
     SUPABASE_SERVICE_ROLE_KEY:string;
     NEXTAUTH_SECRET:string;
     SUPABASE_URL: string;
+    SENDGRID_API_KEY:string;
+    SENDGRID_SENDER:string;
   }
 }

@@ -65,9 +65,9 @@ const handleNavClick = (id: string) => {
         <div className="nav-links hidden md:block">
           <ul className="flex gap-11 text-[14px] tracking-widest">
             <li className="text-[#544DF2]"><Link href='/'>Home</Link></li>
-            <li className="hover:text-[#544DF2]"><Link href='#features' onClick={() => handleNavClick("#features")}>Features</Link></li>
-            <li className="hover:text-[#544DF2]"><Link href='#how-it-works' onClick={() => handleNavClick("#how-it-works")}>How it works</Link></li>
-            <li className="hover:text-[#544DF2]"><Link href='#pricing' onClick={() => handleNavClick("#pricing")}>Pricing</Link></li>
+            <li><Link href='#features' className="hover:text-[#544DF2]" onClick={() => handleNavClick("#features")}>Features</Link></li>
+            <li><Link href='#how-it-works' className="hover:text-[#544DF2]" onClick={() => handleNavClick("#how-it-works")}>How it works</Link></li>
+            <li><Link href='#pricing' className="hover:text-[#544DF2]" onClick={() => handleNavClick("#pricing")}>Pricing</Link></li>
           </ul>
         </div>
         </AnimatePresence>

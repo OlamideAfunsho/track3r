@@ -7,33 +7,6 @@ import avatars from "../public/avatars.png";
 
 const Users = () => {
 
-//  // Just practicing APIs
-
-// type PokemonData = {
-//   name:string;
-//   sprites: { front_default: string };
-// }
-
-//  const [pokemon, setPokemon] = useState<PokemonData | null>(null);
-
-
-//  useEffect(() => {
-//   async function getPokemonData() {
-//   try {
-//     const response = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu");
-//     const data = await response.json();
-//     setPokemon(data);
-//   } catch (error) {
-//     console.log("Error:", error);
-//   }
-//  }
-
-//  getPokemonData()
-//  }, []);
-
-//  if (!pokemon) return <p>Loading...</p>;
-
-
   return (
     <div className="text-center w-3/4 m-auto mt-20 md:mt-28">
       <h1 className="text-3xl md:text-5xl font-bold">

@@ -1,4 +1,5 @@
 'use client';
+export const dynamic = "force-dynamic";
 
 import { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -6,8 +7,6 @@ import Image from "next/image";
 import logo from '../../../public/logo.svg';
 import { afacad, dmSans } from "../fonts";
 
-
-export const dynamic = "force-dynamic";
 
 export default function VerifyPage() {
   const searchParams = useSearchParams();

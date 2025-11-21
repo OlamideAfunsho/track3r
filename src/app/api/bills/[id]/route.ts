@@ -21,8 +21,10 @@ async function createSupabaseServerClient() {
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> } // <- Note: Promise
 ) {
+  const { id } = await context.params; // unwrap the promise
+
   const session = await auth();
 
   if (!session?.user?.id) {
@@ -34,7 +36,7 @@ export async function DELETE(
   const { error } = await supabase
     .from("bills")
     .delete()
-    .eq("id", params.id)
+    .eq("id", id)
     .eq("user_id", session.user.id);
 
   if (error) {
@@ -43,3 +45,4 @@ export async function DELETE(
 
   return NextResponse.json({ message: "Bill deleted successfully" });
 }
+

@@ -4,6 +4,7 @@ import { auth } from "../../../../auth";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { sendEmail } from "@/lib/sendEmail";
+import { NextRequest } from "next/server";
 
 
 async function createSupabaseServerClient() {
@@ -65,7 +66,7 @@ async function ensureUserExists(supabase: any, session: any) {
 }
 
 // POST — create bill
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const session = await auth();
 
   if (!session?.user?.id) {

@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 
 async function createSupabaseServerClient() {
   const cookieStore = await cookies();
+
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
@@ -20,20 +21,20 @@ async function createSupabaseServerClient() {
 
 export async function DELETE(
   request: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await context.params; // ← IMPORTANT FIX
-
   const session = await auth();
+
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const supabase = await createSupabaseServerClient();
+
   const { error } = await supabase
     .from("bills")
     .delete()
-    .eq("id", id)
+    .eq("id", params.id)
     .eq("user_id", session.user.id);
 
   if (error) {

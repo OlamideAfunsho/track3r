@@ -1,10 +1,13 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
-import logo from '../../../public/logo.svg'
+import logo from '../../../public/logo.svg';
 import { afacad, dmSans } from "../fonts";
+
+
+export const dynamic = "force-dynamic";
 
 export default function VerifyPage() {
   const searchParams = useSearchParams();
@@ -24,30 +27,36 @@ export default function VerifyPage() {
     setLoading(true);
     setMessage("");
 
-    const res = await fetch("/api/verify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, code: otp }), // FIXED
-    });
+    try {
+      const res = await fetch("/api/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, code: otp }),
+      });
 
-    const data = await res.json();
-    setLoading(false);
+      const data = await res.json();
+      setLoading(false);
 
-    if (data.error) {
-      setMessage(data.error);
-      return;
+      if (data.error) {
+        setMessage(data.error);
+        return;
+      }
+
+      router.push("/login?verified=true");
+    } catch (err) {
+      setLoading(false);
+      setMessage("Something went wrong. Please try again.");
+      console.error(err);
     }
-
-    // success → redirect to login page
-    router.push("/login?verified=true");
   }
 
   return (
     <div className={`${afacad.className} flex flex-col gap-2 h-screen justify-center items-center p-5 max-w-[400px] m-auto`}>
-        <Image src={logo} alt="track3r-logo" />
-      <h1 className={`text-xl font-medium`}>Email Verification</h1>
+      <Image src={logo} alt="track3r-logo" />
 
-      <p className={``}>
+      <h1 className="text-xl font-medium">Email Verification</h1>
+
+      <p>
         Enter the OTP sent to <strong>{email}</strong>
       </p>
 
@@ -56,7 +65,7 @@ export default function VerifyPage() {
         placeholder="Enter OTP"
         value={otp}
         onChange={(e) => setOtp(e.target.value)}
-        className="w-full p-2.5 mb-2.5 border-[1px] border-[#CCC] rounded-[5px]"
+        className="w-full p-2.5 mb-2.5 border border-[#CCC] rounded-[5px]"
       />
 
       <button

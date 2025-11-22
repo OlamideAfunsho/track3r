@@ -28,7 +28,7 @@ const Testimonials = () => {
         },
         {
             image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60',
-            name: 'John Smith',
+            name: 'James Black',
             role: 'Student',
             date: 'May 10, 2025'
         },
@@ -77,7 +77,7 @@ const Testimonials = () => {
         `}</style>
 
         <div className="h-screen flex flex-col justify-center">
-            <h1 className='text-3xl px-8 md:text-5xl text-center font-bold'><span className='text-[#929297]'>What Our Users</span> <span className='text-[#544DF2]'>Say</span> About Us</h1>
+            <h1 className='text-[26px]/10 px-8 md:text-5xl/10 text-[#929297] text-center font-bold'>What Our Users Say About Us</h1>
 
             <div className="marquee-row w-full overflow-hidden relative">
                 <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-linear-to-r from-white to-transparent"></div>

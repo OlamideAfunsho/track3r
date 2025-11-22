@@ -13,7 +13,7 @@ import FeaturesCon from './FeaturesCon'
 const Features = () => {
   return (
     <div className='flex flex-col items-center mt-18 md:mt-24 pt-5 ' id='features'>
-        <h1 className='text-3xl w-3/4 text-center md:text-5xl font-bold mb-8'><span className='text-[#929297]'>How</span> <span className='text-[#544DF2]'>Track3r</span> Brings You Peace Of Mind</h1>
+        <h1 className='text-[26px]/10 w-3/4 text-center text-[#929297] md:text-5xl/10 font-bold mb-8'>How Trac3r Brings You Peace Of Mind</h1>
 
 
         {/* mobile view */}
@@ -32,7 +32,7 @@ const Features = () => {
         </div>
 
         <div className='mt-24 text-center pt-8' id="how-it-works">
-            <h1 className='text-3xl md:text-5xl font-bold w-2xs md:w-3xl' ><span className='text-[#929297]'>Everything</span> You Need to Stay on <span className='text-[#544DF2]'>Top of Your Bills</span></h1>
+            <h1 className='text-[26px]/10 md:text-5xl/10 text-[#929297] font-bold w-2xs md:w-3xl' >Everything You Need to Stay on Top of Your Bills</h1>
             <FeaturesCon />
         </div>
     </div>

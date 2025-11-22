@@ -7,23 +7,23 @@ const FAQs = () => {
     const faqsData = [
         {
             question: 'What happens at the end of the trial?',
-            answer: 'Built with speed — minimal load times and optimized rendering.'
+            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed libero tincidunt, suscipit nibh et, placerat eros.'
         },
         {
             question: 'Can I cancel any time?',
-            answer: 'Easily adjust styles, structure, and behavior to match your project needs.'
+            answer: 'Fusce condimentum dolor sem, a faucibus lacus ullamcorper non. Nullam lobortis semper purus id laoreet.'
         },
         {
             question: 'Is there a free trial?',
-            answer: 'Every component are responsive by default — no extra CSS required.'
+            answer: 'Mauris ac volutpat turpis. Nunc leo nibh, tempor a justo sagittis, facilisis molestie nibh. Vestibulum dapibus id nibh vitae aliquam.'
         },
         {
-            question: 'Tailwind CSS Powered',
-            answer: 'Built using Tailwind utility classes — no extra CSS or frameworks required.'
+            question: 'Should I use Track3r?',
+            answer: 'Aliquam ex nunc, sollicitudin venenatis molestie id, facilisis et nibh.'
         },
         {
-            question: 'Dark Mode Support',
-            answer: 'All components come ready with light and dark theme support out of the box.'
+            question: 'What is Track3r?',
+            answer: 'Quite the curious one, are you? 😊'
         }
     ]
     return (
@@ -31,7 +31,7 @@ const FAQs = () => {
             
             <div className='flex flex-col items-center text-center bg-[#EFEFF1] px-8 md:px-3  pt-20 pb-30 md:pb-40'>
                 
-                <h1 className='text-3xl md:text-5xl font-bold mt-0 md:mt-2 mb-4'><span className='text-[#929297]'>Frequently</span> Asked <span className='text-[#544DF2]'>Questions</span></h1>
+                <h1 className='text-[26px]/10 md:text-5xl/10 text-[#929297] font-bold mt-0 md:mt-2 mb-4'>Frequently Asked Questions</h1>
                 
                 <div className='max-w-xl w-full mt-6 flex flex-col gap-4 items-start text-left'>
                     {faqsData.map((faq, index) => (

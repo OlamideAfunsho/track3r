@@ -77,7 +77,7 @@ export default function NavLinks() {
             )}
           >
             <Image src={link.icon} alt='nav-icons'
-            style={{ filter: pathname === link.href ? 'invert(28%) sepia(89%) saturate(4200%) hue-rotate(232deg) brightness(91%) contrast(101%)' : 'invert(53%) sepia(13%) saturate(582%) hue-rotate(186deg) brightness(93%) contrast(86%)' }}
+            style={{ filter: pathname === link.href ? 'invert(55%) sepia(76%) saturate(7472%) hue-rotate(234deg) brightness(95%) contrast(100%)' : 'invert(53%) sepia(13%) saturate(582%) hue-rotate(186deg) brightness(93%) contrast(86%)' }}
              />
             <p className="hidden md:block">{link.name}</p>
           </Link>

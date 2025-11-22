@@ -9,8 +9,8 @@ const Users = () => {
 
   return (
     <div className="text-center w-3/4 m-auto mt-20 md:mt-28">
-      <h1 className="text-3xl md:text-5xl font-bold">
-        <span className="text-[#929297]">Trusted by</span> Thousands of
+      <h1 className="text-[26px]/10 md:text-5xl/8 font-bold text-[#929297]">
+        Trusted by Thousands of
         Organized Users
       </h1>
       <div className="flex flex-row mt-5 mb-3 md:mb-auto justify-center items-center gap-3 md:gap-8">

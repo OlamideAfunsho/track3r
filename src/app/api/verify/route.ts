@@ -1,6 +1,7 @@
 // /app/api/verify/route.ts
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseServer";
+import bcrypt from "bcryptjs";
 
 export async function POST(request: Request) {
   try {
@@ -34,8 +35,10 @@ export async function POST(request: Request) {
       );
     }
 
+    const isMatch = await bcrypt.compare(code, user.verification_code);
+
     // Wrong code
-    if (user.verification_code !== code) {
+    if (!isMatch) {
       return NextResponse.json(
         { error: "Invalid verification code" },
         { status: 400 }

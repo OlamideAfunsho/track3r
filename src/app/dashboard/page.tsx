@@ -15,7 +15,6 @@ const Page = () => {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-
   useEffect(() => {
     if (status === "loading") return; // prevent early redirect
     if (status === "unauthenticated") {
@@ -64,7 +63,9 @@ const Page = () => {
   const getStatus = (dueDate: string): "Upcoming" | "Due Soon" | "Expired" => {
     const today = new Date();
     const due = new Date(dueDate);
-    const diffDays = Math.ceil((due.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+    const diffDays = Math.ceil(
+      (due.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+    );
 
     if (diffDays < 0) return "Expired";
     if (diffDays <= 7) return "Due Soon";
@@ -91,32 +92,41 @@ const Page = () => {
   // If user has no bills
   if (!bills || bills.length === 0) {
     return (
-      <div className="py-20 px-6">
-        <div className="flex flex-col items-start md:flex-row gap-2 md:items-center justify-between">
-          <div className="flex items-center mb-4">
-            <h1 className={`${afacad.className} text-2xl font-medium md:text-3xl lg:text-4xl`}>
-              Welcome, <span className="text-[#544DF2]">{session?.user?.name}</span>
-            </h1>
-            <Image src={waveEmoji} alt="waving-emoji" className="h-8 w-auto" />
-          </div>
-        </div>
-
-        <div className="flex gap-2 justify-center items-center h-full">
-          <p>No bills yet. Add one to get started!</p>
-          <Link
-            href="/dashboard/add-bill"
-            className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-[12px] md:px-[16px] py-[8px] rounded-[8px] hover:bg-[rgba(84,77,242,0.8)]"
-          >
-            Add Bill +
-          </Link>
-        </div>
-
+      <div className="">
+        <div className="w-full flex items-center justify-between px-5 bg-[#FFFFFF] h-[50px]">
+        <h1 className={`${afacad.className} text-[#6D6666] text-2xl`}>
+          Dashboard
+        </h1>
         <button
           onClick={handleSignOut}
-          className="mt-6 text-[#544DF2] hover:text-[#3e3abf] text-sm font-medium cursor-pointer"
+          className="text-[#544DF2] hover:text-[#3e3abf] text-sm font-medium cursor-pointer"
         >
           Logout
         </button>
+      </div>
+        <div className="text-center py-10">
+          <div className="flex items-center justify-center mb-4">
+            <h1
+              className={`${afacad.className} text-2xl font-medium md:text-3xl lg:text-4xl`}
+            >
+              Welcome,{" "}
+              <span className="text-[#544DF2]">{session?.user?.name}</span>
+            </h1>
+            <Image src={waveEmoji} alt="waving-emoji" className="h-8 w-auto" />
+          </div>
+
+          <h1 className="mb-4">No bills yet. Add one to get started!</h1>
+          <Link
+            href="/dashboard/add-bill"
+            className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-5 py-3 ml-6 rounded-xl shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1] hover:bg-[rgba(84,77,242,0.8)]"
+          >
+            Add Bill <span className="text-[20px]">+</span>
+          </Link>
+        </div>
+
+        
+          
+        
       </div>
     );
   }
@@ -125,7 +135,9 @@ const Page = () => {
     <div>
       {/* Navbar */}
       <div className="w-full flex items-center justify-between px-5 bg-[#FFFFFF] h-[50px]">
-        <h1 className={`${afacad.className} text-[#6D6666] text-2xl`}>Dashboard</h1>
+        <h1 className={`${afacad.className} text-[#6D6666] text-2xl`}>
+          Dashboard
+        </h1>
         <button
           onClick={handleSignOut}
           className="text-[#544DF2] hover:text-[#3e3abf] text-sm font-medium cursor-pointer"
@@ -138,17 +150,20 @@ const Page = () => {
       <div className="container px-6 py-6">
         <div className="flex flex-col items-start md:flex-row gap-2 md:items-center justify-between">
           <div className="flex items-center">
-            <h1 className={`${afacad.className} text-2xl font-medium md:text-3xl lg:text-4xl`}>
-              Welcome, <span className="text-[#544DF2]">{session?.user?.name}</span>
+            <h1
+              className={`${afacad.className} text-2xl font-medium md:text-3xl lg:text-4xl`}
+            >
+              Welcome,{" "}
+              <span className="text-[#544DF2]">{session?.user?.name}</span>
             </h1>
             <Image src={waveEmoji} alt="waving-emoji" className="h-8 w-auto" />
           </div>
 
           <Link
             href="/dashboard/add-bill"
-            className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-[16px] py-[6px] rounded-[8px] hover:bg-[rgba(84,77,242,0.8)]"
+            className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-5 py-2 ml-6 rounded-xl shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1] hover:bg-[rgba(84,77,242,0.8)]"
           >
-            Add Bill +
+            Add Bill <span className="text-[20px]">+</span>
           </Link>
         </div>
 
@@ -168,7 +183,9 @@ const Page = () => {
         {/* Subscriptions Table */}
         <div className="w-full md:w-full lg:w-3/5 p-4 border rounded-[7px] bg-[#F2F7FF] mt-4">
           <div className="overflow-x-auto">
-            <table className={`${afacad.className} min-w-full text-sm text-left`}>
+            <table
+              className={`${afacad.className} min-w-full text-sm text-left`}
+            >
               <thead className="text-[#50545E] text-[16px]">
                 <tr>
                   <th className="md:px-6 py-4">Service</th>
@@ -194,9 +211,15 @@ const Page = () => {
                         )}
                         {bill.title}
                       </td>
-                      <td className="md:px-6 py-3 text-[#50545E]">₦{bill.amount}</td>
-                      <td className="md:px-6 py-3 text-[#50545E]">{bill.due_date}</td>
-                      <td className={`md:px-6 py-3 font-medium ${statusColor}`}>{status}</td>
+                      <td className="md:px-6 py-3 text-[#50545E]">
+                        ₦{bill.amount}
+                      </td>
+                      <td className="md:px-6 py-3 text-[#50545E]">
+                        {bill.due_date}
+                      </td>
+                      <td className={`md:px-6 py-3 font-medium ${statusColor}`}>
+                        {status}
+                      </td>
                     </tr>
                   );
                 })}

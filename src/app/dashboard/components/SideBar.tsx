@@ -12,7 +12,7 @@ import NavLinks from './NavLinks';
 const SideBar = () => {
   return (
     <div className='flex flex-col h-full bg-[#FFFFFF] py-3'>
-        <Link href='/'><Image src={logo} alt='track3r-logo' className='pl-3 md:w-30' /></Link>
+        <Link href='/'><Image src={logo} alt='track3r-logo' className='pl-3 w-38' /></Link>
 
         <div className='flex items-center gap-2 bg-[#FCFCFC] border-[#E0E0E0] border rounded-[3px] my-4 mx-3 h-10 p-2'>
           <Image src={searchIcon} alt='search-icon' className='w-auto h-4' />

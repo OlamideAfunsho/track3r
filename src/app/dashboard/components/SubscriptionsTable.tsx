@@ -59,12 +59,12 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
     return (
       <div className="flex gap-2 justify-center items-center h-full">
         <p>No bills yet. Add one to get started!</p>
-        <Link
-          href="/dashboard/add-bill"
-          className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-4 py-1.5 rounded-xl hover:bg-[rgba(84,77,242,0.8)]"
-        >
-          Add Bill <span className="text-[20px]">+</span>
-        </Link>
+       <Link
+        href="/dashboard/add-bill"
+        className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-5 py-2 ml-6 rounded-xl shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1] hover:bg-[rgba(84,77,242,0.8)]"
+      >
+        Add Bill <span className="text-[20px]">+</span>
+      </Link>
       </div>
     );
   }
@@ -147,7 +147,7 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
 
       <Link
         href="/dashboard/add-bill"
-        className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-5 py-2.5 ml-6 rounded-xl shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1] hover:bg-[rgba(84,77,242,0.8)]"
+        className="bg-[#544DF2] text-[14px] text-[#FFFFFF] px-5 py-3 ml-6 rounded-xl shadow-[inset_0px_4px_11.2px_0px_#FAFAFAA1] hover:bg-[rgba(84,77,242,0.8)]"
       >
         Add Bill <span className="text-[20px]">+</span>
       </Link>

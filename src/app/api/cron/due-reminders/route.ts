@@ -19,7 +19,7 @@ async function supabaseAdmin() {
 }
 
 export async function GET(req: Request) {
-  // 1️⃣ Check CRON_SECRET for security
+  // Check CRON_SECRET for security
   const authHeader = req.headers.get("Authorization");
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -27,7 +27,7 @@ export async function GET(req: Request) {
 
   const supabase = await supabaseAdmin();
 
-  // 2️⃣ Fetch all bills + user info
+  // Fetch all bills + user info
   const { data: bills, error } = await supabase
     .from("bills")
     .select(`
@@ -58,7 +58,7 @@ export async function GET(req: Request) {
     const email = user.email;
     const name = user.name ?? "there";
 
-    // 3️⃣ Bill due soon (7 days before)
+    // Bill due soon (7 days before)
     const isDueSoon =
       due >= today &&
       due <= nextWeek &&
@@ -67,9 +67,9 @@ export async function GET(req: Request) {
     if (isDueSoon) {
       await sendEmail(
         email,
-        "Your bill is due soon",
+        "Your subscription is due soon",
         `<p>Hi ${name},</p>
-         <p>Your bill is due soon:</p>
+         <p>Your subscription is due soon:</p>
          <ul>
            <li><b>Title:</b> ${bill.title}</li>
            <li><b>Amount:</b> ${bill.amount}</li>
@@ -91,9 +91,9 @@ export async function GET(req: Request) {
     if (isDueToday) {
       await sendEmail(
         email,
-        "Bill due today",
+        "Subsciption due today",
         `<p>Hi ${name},</p>
-         <p>Your bill is due today:</p>
+         <p>Your subscription is due today:</p>
          <ul>
            <li><b>Title:</b> ${bill.title}</li>
            <li><b>Amount:</b> ${bill.amount}</li>

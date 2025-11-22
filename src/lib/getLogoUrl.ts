@@ -7,9 +7,11 @@ const billLogos: Record<string, string> = {
     photoshop: '/bills-logos/photoshop-logo.svg',
     spotify: '/bills-logos/spotify-logo.svg',
     youtube: '/bills-logos/youtube-logo.svg',
+    chatgpt: '/bills-logos/chatgpt-logo.svg',
+    default: '/bills-logos/default-logo.svg',
 }
 
-export function getLogoUrl(serviceName: string): string | null {
+export function getLogoUrl(serviceName: string): string {
   const lowerName = serviceName.toLowerCase()
 
   // This will check for exact match first
@@ -22,5 +24,5 @@ export function getLogoUrl(serviceName: string): string | null {
     }
   }
 
-  return null
+  return billLogos.default;
 }

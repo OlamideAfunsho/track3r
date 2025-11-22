@@ -116,15 +116,13 @@ export async function GET() {
 
   const supabase = await createSupabaseServerClient();
 
-  // Ensure user exists for GET as well
-  const stableUserId = await ensureUserExists(supabase, session);
-
+  const userId = session.user.id;
+  
   const { data: bills, error } = await supabase
     .from("bills")
     .select("*")
-    .eq("user_id", stableUserId)
+    .eq("user_id", userId) // Use the ID directly from the session
     .order("due_date", { ascending: true });
-
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

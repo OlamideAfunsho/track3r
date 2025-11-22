@@ -15,5 +15,6 @@ declare namespace NodeJS {
     SENDGRID_SENDER:string;
     RESEND_API_KEY:string;
     CRON_SECRET:string;
+    RESEND_SENDER_EMAIL:string;
   }
 }

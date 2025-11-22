@@ -57,7 +57,7 @@ export default function SubscriptionsTable({ initialBills }: { initialBills: Bil
 
   if (bills.length === 0) {
     return (
-      <div className="flex flex-col sm:flex-row gap-2 justify-center items-center h-[400px]">
+      <div className="flex flex-col sm:flex-row gap-2 justify-center items-center h-[420px]">
         <p>No bills yet. Add one to get started!</p>
        <Link
         href="/dashboard/add-bill"

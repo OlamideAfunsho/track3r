@@ -25,7 +25,7 @@ const SideBar = () => {
         </div>
         
 
-        <div className="flex grow flex-row justify-between ml-3 mr-3 sm:ml-0 sm:mr-3  md:flex-col md:space-x-0 md:space-y-1">
+        <div className="flex grow flex-row justify-between ml-3 mr-3 sm:ml-3 sm:mr-3  md:flex-col md:space-x-0 md:space-y-1">
         <NavLinks />
         <div className="hidden h-auto w-full grow rounded-md md:block"></div>
         <form className='hidden md:block'>

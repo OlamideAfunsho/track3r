@@ -101,15 +101,27 @@ const Page = () => {
         <h1 className={`${afacad.className} text-[#6D6666] text-2xl`}>
           Dashboard
         </h1>
-        <button
+       
+       
+       <div className="flex items-center gap-2">
+        <Image src={userProfilePicture} width={30} height={30} alt="user-profile-picture" className="rounded-full w-7 h-7 " />
+        <div className="flex flex-col items-start">
+          <button
           onClick={handleSignOut}
           className="text-[#544DF2] hover:text-[#3e3abf] text-sm font-medium cursor-pointer"
         >
           Logout
         </button>
+
+        <span className="text-[12px]">{session?.user?.email}</span>
+        </div>
+         
+        
+       </div>
+        
       </div>
-        <div className="text-center py-10">
-          <div className="flex items-center justify-center mb-4">
+        <div className="text-center py-10 h-[450px]">
+          <div className="flex items-center justify-center mb-4 ">
             <h1
               className={`${afacad.className} text-2xl font-medium md:text-3xl lg:text-4xl`}
             >

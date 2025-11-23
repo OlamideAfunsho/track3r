@@ -8,7 +8,7 @@ if (API_KEY) {
     console.error("SENDGRID_API_KEY is missing! Emails will not send.");
 }
 
-const SENDER_EMAIL = process.env.SENDGRID_SENDER_EMAIL || "default@example.com"; 
+const SENDER_EMAIL = process.env.SENDGRID_SENDER || "default@example.com"; 
 
 export async function sendEmail(to: string, subject: string, html: string) {
     if (!API_KEY) {

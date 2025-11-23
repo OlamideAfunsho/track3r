@@ -113,7 +113,7 @@ const Page = () => {
           Logout
         </button>
 
-        <span className="text-[12px]">{session?.user?.email}</span>
+        <span className="hidden md:block text-[12px]">{session?.user?.email}</span>
         </div>
          
         
@@ -166,7 +166,7 @@ const Page = () => {
           Logout
         </button>
 
-        <span className="text-[12px]">{session?.user?.email}</span>
+        <span className="hidden md:block text-[12px]">{session?.user?.email}</span>
         </div>
          
         

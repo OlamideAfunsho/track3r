@@ -1,6 +1,6 @@
 // /app/api/verify/route.ts
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabaseServer";
+import { supabase as supabaseAdmin } from "@/lib/supabaseServer";
 import bcrypt from "bcryptjs";
 
 export async function POST(request: Request) {
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     }
 
     // Get user
-    const { data: user } = await supabase
+    const { data: user } = await supabaseAdmin
       .from("users")
       .select("id, verification_code, verification_expires, is_verified")
       .eq("email", email)
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
     }
 
     // Update (NO select(), to avoid RLS blocking)
-    const { error: updateError } = await supabase
+    const { error: updateError } = await supabaseAdmin
       .from("users")
       .update({
         is_verified: true,

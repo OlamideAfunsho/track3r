@@ -68,6 +68,7 @@ async function ensureUserExists(session: any) {
   const { error: insertError } = await supabaseAdmin.from("users").insert(newUser); // ⬅️ Use Admin Client
   if (insertError) {
     console.error("Error auto-creating user:", insertError); // Changed console.log to console.error
+    throw new Error("Failed to initialize user record.");
   }
 
   return userId;
